@@ -1,0 +1,76 @@
+.messageDivRec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.wrapperRec {
+    display: flex;
+    flex-direction: row;
+    height: 90px;
+    width: 100%;
+    align-items: center;
+}
+.nameRec {
+    color: midnightblue;
+    font-size: small;
+    margin-bottom: 5px;
+    text-align: left;
+}
+.messageRec {
+    background-color: rgb(235, 233, 233);
+    border-radius: 10px;
+    border: white;
+    padding: 6px;
+    width: auto;
+}
+.chat-stream {
+    flex: 1;
+    width: 100%;
+}
+.avatarImg {
+    height: 70px;
+    width: 70px;
+    border: white;
+    border-radius: 50%;
+}
+.messageDivSent {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+.wrapperSent {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 90px;
+    width: 100%;
+    align-items: center;
+}
+.nameSent {
+    color: midnightblue;
+    font-size: small;
+    margin-bottom: 5px;
+    text-align: right;
+}
+.messageSent {
+    background-color: rgb(70, 131, 245);
+    border-radius: 10px;
+    border: white;
+    padding: 6px;
+    width: auto;
+}
+.sentTextTip {
+    position: relative;
+    left: -9px;
+    top: 5px;
+    height: 30px;
+    width: 30px;
+}
+.receivedTextTip {
+    position: relative;
+    right: -8px;
+    top: 5px;
+    height: 30px;
+    width: 30px;
+}

@@ -59,7 +59,7 @@ We can use it like this:
 <RecommendedArtist
   imageUrl="geoxor.jpg"
   artistName="Geoxor"
-  numOfSongs={1}
+  numOfSongs={1} // {} indicates that 1 is a number and not a string
 />
 
 ```
@@ -101,6 +101,37 @@ function VideoPlayer(props) {
     </div>
   );
 }
+// Propified, becomes:
+
+function VideoPlayer(props) {
+  return (
+    <div>
+      <video
+        src={props.videoUrl}
+        width={props.width}
+        height={props.height}
+      />
+      <p>{props.description}</p>
+    </div>
+  );
+}
+
+// OR
+
+function VideoPlayer({ videoUrl, width, height, description }) {
+  return (
+    <div>
+      <video
+        src={videoUrl}
+        width={width}
+        height={height}
+      />
+      <p>{props.description}</p>
+    </div>
+  );
+}
+
+
 ```
 
 ---
@@ -127,6 +158,29 @@ function Tweet(props) {
     </div>
   );
 }
+
+function Tweet(props) {
+  return (
+    <div>
+      <Avatar src={props.src} />
+      <div>
+        <p>
+          <span className="user-name">{props.userName}</span>
+          <span className="handle">{props.handle}</span>
+          <span className="date">{props.date}</span>
+        </p>
+        <p>{props.snarkyComment}</p>
+        <div>
+          <button onclick={props.reply}>Reply</button>
+          <button>Retweet</button>
+          <button>Like</button>
+          <button>Share</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 ```
 
 ---
@@ -135,11 +189,11 @@ function Tweet(props) {
 function Header(props) {
   return (
     <header>
-      <h1>My great website</h1>
+      <h1>{props.header}</h1>
 
       <nav>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
+        <a href={props.nav.first.url}>{props.nav.first.label}</a>
+        <a href={props.nav.second.url}>{props.nav.second.label}</a>
       </nav>
     </header>
   );
@@ -216,7 +270,8 @@ const storeItems = [
 function App(props) {
   return (
     <div>
-      {storeItems.map(item => (
+      {storeItems.map(item => (  // uses paretheses so he can write next line on the nex line.  Otherwise, could use nothing if it is on
+      // the saem like as the arrow if it is only one line long.  OR use braces and finish it with a return.
         <StoreItem name={item.name} price={item.price} />
       ))}
     </div>
@@ -254,6 +309,29 @@ const pets = [
     />
   </ul>
 </div>;
+
+// Using map
+
+const pets = [
+  { name: 'name1',
+    age: 'age2',
+    //etc
+  },
+  {
+    //etc
+  }
+
+];
+
+<div>
+  <h1 className="title">My pets:</h1>
+  <ul> 
+      {petListing.map(pet => (
+        <PetInfo name={pets.name} age={pets.age} species={pets.species} breed={pets.breed} />
+      ))}
+  </ul>
+</div>;
+
 ```
 
 ---
@@ -288,6 +366,22 @@ const pizzaToppings = [
   <Topping name="green pepper" />
   <Topping name="broccoli" />
 </Pizza>
+
+// using map and filter
+
+const pizzaToppings = [
+  { name: 'pepperoni', isVegetarian: false },
+  { name: 'green pepper', isVegetarian: true },
+  { name: 'broccoli', isVegetarian: true },
+  { name: 'sausage', isVegetarian: false },
+]
+
+<Pizza>
+  {pizzaToppings.filter(topping => topping.isVegetarian)
+  .map(topping => <Topping name={topping.name}/>)
+  }
+</Pizza>
+
 ```
 
 Hint: You'll need `filter` as well as `map`
