@@ -141,6 +141,11 @@ A _slot_ in which we can write JavaScript expressions.
 let index = 0;
 
 <div id={'item-' + index} />;
+
+// or
+
+<div id={`item-${index}`} />;
+
 ```
 
 ---
@@ -160,6 +165,8 @@ render(
 
 ```jsx
 <li className={isOnline && 'green'}>{user.username}</li>
+//as same: 
+<li className={isOnline ? 'green' : ''}>{user.username}</li>
 
 // ⚠️ New notation! another way to use of &&.
 ```
@@ -171,6 +178,8 @@ render(
 Convert this JSX snippet to HTML:
 
 ```jsx
+
+//JSX
 let birthdayCakeImage = '/images/cake.jpg';
 let age = 10;
 
@@ -178,6 +187,14 @@ let age = 10;
   <img src={birthdayCakeImage} />
   <p>Happy {age}th birthday!</p>
 </div>;
+
+// HTML:
+<div class="wrapper">
+  <img src='/images/cake.jpg' alt='An image of a cake'/>
+  <p>Happy 10th birthday!</p>
+</div>
+
+
 ```
 
 ---
@@ -185,6 +202,7 @@ let age = 10;
 Convert this one too:
 
 ```jsx
+// JSX
 let agreeToTerms = false;
 
 <div>
@@ -196,6 +214,14 @@ let agreeToTerms = false;
     <div>YOUR SOUL BELONGS TO ME MWAHAHAHAHAAAAAAHHHHHH!!!1</div>
   )}
 </div>;
+
+// HTML
+<div>
+  <label for="terms-of-service">
+    <input type="checkbox" id="terms-of-service" innerText='I agree to the terms'/>
+  </label>
+</div>
+
 ```
 
 ---
@@ -203,6 +229,7 @@ let agreeToTerms = false;
 Convert:
 
 ```jsx
+// JSX
 const pets = [
   {
     name: 'Bark Obama',
@@ -262,6 +289,52 @@ const pets = [
     </li>
   </ul>
 </div>;
+
+// HTML
+<div>
+  <h1 className="title">My pets:</h1>
+  <ul>
+    <li>
+      <h3>Bark Obama</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Age</th>
+            <th>Species</th>
+            <th>Breed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3</td>
+            <td>dog</td>
+            <td>Labradoodle</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+
+    <li>
+      <h3>Chairman Meow</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Age</th>
+            <th>Species</th>
+            <th>Breed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>8</td>
+            <td>cat</td>
+            <td>ragdoll</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+  </ul>
+</div>
 ```
 
 ---
@@ -273,6 +346,7 @@ ReactDOM.render(
   <div>Hello world</div>,
   document.querySelector('#root')
 );
+
 ```
 
 ---
